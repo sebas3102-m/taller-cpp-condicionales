@@ -1,0 +1,62 @@
+#include <iostream>
+
+int main() {
+    double saldo = 1000.0;      // saldo inicial
+    int transacciones = 0;       // contador con ++
+    bool salir = false;
+
+    while (!salir) {
+        std::cout << "\n=== Cajero ===\n";
+        std::cout << "1) Depositar\n2) Retirar\n3) Consultar\n4) Salir\nElige: ";
+        int opcion;
+        std::cin >> opcion;
+
+        switch (opcion) {
+            case 1: { // Depositar
+                double monto;
+                std::cout << "Monto a depositar: ";
+                std::cin >> monto;
+                if (monto > 0) {
+                    saldo += monto;        // acumulador
+                    ++transacciones;       // cuenta la operación
+                    std::cout << "Deposito OK.\n";
+                } else {
+                    std::cout << "Monto invalido.\n";
+                }
+                break;
+            }
+            case 2: { // Retirar
+                double monto;
+                std::cout << "Monto a retirar: ";
+                std::cin >> monto;
+                if (monto <= 0) {
+                    std::cout << "Monto invalido.\n";
+                } else if (monto > saldo) {
+                    std::cout << "Fondos insuficientes.\n";
+                } else {
+                    saldo -= monto;        // acumulador
+                    ++transacciones;
+                    std::cout << "Retiro OK.\n";
+                }
+                break;
+            }
+            case 3: { // Consultar
+                std::cout << "Saldo actual: " << saldo << "\n";
+                std::cout << "Transacciones realizadas: " << transacciones << "\n";
+                break;
+            }
+            case 4: {
+                salir = true;
+                break;
+            }
+            default:
+                std::cout << "Opcion no valida.\n";
+                // ejemplo de uso de -- si quisieras revertir un conteo mal ingresado:
+                // if (transacciones > 0) --transacciones;
+                break;
+        }
+    }
+
+    std::cout << "Sesion finalizada. Transacciones totales: " << transacciones << "\n";
+    return 0;
+}
