@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+
+int main() {
+    float peso_kg;     // float para la entrada
+    float altura_m;    // float para la entrada
+    std::cout << "Peso (kg) y altura (m): ";
+    std::cin >> peso_kg >> altura_m;
+
+    if (peso_kg <= 0 || altura_m <= 0) {
+        std::cout << "Datos invalidos.\n";
+        return 0;
+    }
+
+    // Cálculo con double (más precisión)
+    double peso = static_cast<double>(peso_kg);
+    double altura = static_cast<double>(altura_m);
+    double imc = peso / (altura * altura);
+
+    std::string rango;
+    std::string accion;
+
+    if (imc < 18.5) {
+        rango = "Bajo peso";
+        accion = "Consultar con un especialista y aumentar ingesta saludable.";
+    } else if (imc < 25.0) {
+        rango = "Normal";
+        accion = "Mantener habitos y actividad fisica.";
+    } else if (imc < 30.0) {
+        rango = "Sobrepeso";
+        accion = "Mejorar dieta y aumentar ejercicio.";
+    } else if (imc < 35.0) {
+        rango = "Obesidad I";
+        accion = "Buscar orientacion nutricional y medica.";
+    } else {
+        rango = "Obesidad II";
+        accion = "Acudir a valoracion medica lo antes posible.";
+    }
+
+    std::cout << "IMC: " << imc << "\n";
+    std::cout << "Clasificacion: " << rango << "\n";
+    std::cout << "Sugerencia: " << accion << "\n";
+    return 0;
+}
