@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+
+int main() {
+    int a_original, b_original;
+    std::cout << "Ingresa a y b: ";
+    std::cin >> a_original >> b_original;
+
+    // (a) Con variable temporal
+    {
+        int a = a_original;
+        int b = b_original;
+        std::cout << "\nMetodo (a) - temporal:\n";
+        std::cout << "inicio: a=" << a << " b=" << b << "\n";
+        int temp = a;
+        a = b;
+        b = temp;
+        std::cout << "final:  a=" << a << " b=" << b << "\n";
+    }
+
+    // (b) Con operaciones aritmeticas
+    {
+        int a = a_original;
+        int b = b_original;
+        std::cout << "\nMetodo (b) - aritmetica:\n";
+        std::cout << "inicio: a=" << a << " b=" << b << "\n";
+        a += b; // a = a+b
+        b = a - b; // b = (a+b)-b = a
+        a -= b; // a = (a+b)-a = b
+        std::cout << "final:  a=" << a << " b=" << b << "\n";
+    }
+
+    // (c) Con XOR
+    {
+        int a = a_original;
+        int b = b_original;
+        std::cout << "\nMetodo (c) - XOR:\n";
+        std::cout << "inicio: a=" << a << " b=" << b << "\n";
+        a ^= b;
+        b ^= a; // b = b ^ (a^b) = a
+        a ^= b; // a = (a^b) ^ a = b
+        std::cout << "final:  a=" << a << " b=" << b << "\n";
+    }
+
+    return 0;
+}
