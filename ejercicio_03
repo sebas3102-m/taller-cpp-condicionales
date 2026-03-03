@@ -1,9 +1,9 @@
 #include <iostream> 
 int main() {
     // Bits de permiso: 4 = 100, 2 = 010, 1 = 001
-    const int LEER    = 4; // 100
-    const int ESCRIBIR = 2; // 010
-    const int EJECUTAR = 1; // 001
+    const int LEER    = 4; // ob100
+    const int ESCRIBIR = 2; // ob010
+    const int EJECUTAR = 1; // ob001
     int valor;
     std::cout << "Ingera valor de permisos (0-7): ";
     std::cin >> valor; 
