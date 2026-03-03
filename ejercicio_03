@@ -1,0 +1,27 @@
+#include <iostream> 
+int main() {
+    // Bits de permiso: 4 = 100, 2 = 010, 1 = 001
+    const int LEER    = 4; // 100
+    const int ESCRIBIR = 2; // 010
+    const int EJECUTAR = 1; // 001
+    int valor;
+    std::cout << "Ingera valor de permisos (0-7): ";
+    std::cin >> valor; 
+    // Verificar con AND bit a bit
+    bool puedeLeer    = (valor & LEEER) !=0;
+    bool puedeEscribir = (valor & ESCRIBIR) !=0;
+    bool puedeEjecutar = (valor & EJECUTAR) !=0;
+    std::cout << "Permisos de "
+              << valor << " = ("
+              << ((valor & LEER)    ? "r" : "-")
+              << ((valor & ESCRIBIR) ? "w" : "-")
+              << ((valor & EJECUTAR) ? "x" : "-")
+              << ")\n";
+    std::cout << "Leer:    " << (puedeLeer    ? "si" : "no") << "\n";
+    std::cout << "Escribir:" << (puedeEscribir ? "si" : "no") << "\n";
+    std::cout << "Ejecutar:" << (puedeEjecutar ? "si" : "no") << "\n";
+    // Ejemplo de NOT bit: permisos que FALTAN
+    int faltan = (~valor) & (LEER | ESCRIBIR | EJECUTAR);
+    std::cout << "Faltan bits: " << faltan << "\n";
+    return 0
+}
