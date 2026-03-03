@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+
+int main() {
+    int anio;
+    std::cout << "Ingresa el anio: ";
+    std::cin >> anio;
+
+    // Reglas
+    bool div4   = (anio % 4 == 0);
+    bool div100 = (anio % 100 == 0);
+    bool div400 = (anio % 400 == 0);
+
+    bool esBisiesto = (div4 && !div100) || div400;
+
+    // Razonamiento paso a paso
+    std::cout << "\nAnalisis para " << anio << ":\n";
+    std::cout << "Divisible entre 4?   " << (div4   ? "si" : "no") << "\n";
+    std::cout << "Divisible entre 100? " << (div100 ? "si" : "no") << "\n";
+    std::cout << "Divisible entre 400? " << (div400 ? "si" : "no") << "\n";
+
+    std::cout << "\nRegla: (div4 && !div100) || div400\n";
+    std::cout << "Resultado: " << (esBisiesto ? "Bisiesto" : "No bisiesto") << "\n";
+
+    return 0;
+}
