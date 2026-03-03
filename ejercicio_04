@@ -1,0 +1,44 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath> // fmod
+
+int main() {
+    double operando1, operando2;
+    char operador;
+
+    std::cout << "Formato: numero operador numero\nEj: 8.5 / 2\n> ";
+    std::cin >> operando1 >> operador >> operando2;
+
+    std::cout << std::fixed << std::setprecision(2);
+
+    switch (operador) {
+        case '+':
+            std::cout << operando1 + operando2 << "\n";
+            break;
+        case '-':
+            std::cout << operando1 - operando2 << "\n";
+            break;
+        case '*':
+            std::cout << operando1 * operando2 << "\n";
+            break;
+        case '/':
+            if (operando2 == 0) {
+                std::cout << "Error: division por cero.\n";
+            } else {
+                std::cout << operando1 / operando2 << "\n";
+            }
+            break;
+        case '%':
+            if (operando2 == 0) {
+                std::cout << "Error: modulo por cero.\n";
+            } else {
+                std::cout << fmod(operando1, operando2) << "\n";
+            }
+            break;
+        default:
+            std::cout << "Operador no valido.\n";
+            break;
+    }
+
+    return 0;
+} 
