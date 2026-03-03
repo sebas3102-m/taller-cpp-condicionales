@@ -1,0 +1,70 @@
+#include <iostream>
+#include <algorithm>  // Para usar min()
+using namespace std;
+
+int main() {
+
+    double montoCompra, descuentoTotal = 0.0;
+    char tipoCliente;
+    int codigoCupon;
+    bool finDeSemana;
+
+    cout << "Ingrese el monto de la compra: ";
+    cin >> montoCompra;
+
+    cout << "Tipo de cliente (V = VIP, N = Normal): ";
+    cin >> tipoCliente;
+
+    cout << "Codigo de cupon (1, 2 o 3): ";
+    cin >> codigoCupon;
+
+    cout << "Es fin de semana? (1 = Si, 0 = No): ";
+    cin >> finDeSemana;
+
+    // Descuento por tipo de cliente
+    if (tipoCliente == 'V' || tipoCliente == 'v') {
+        descuentoTotal += 0.15; // 15%
+    } else if (tipoCliente == 'N' || tipoCliente == 'n') {
+        descuentoTotal += 0.05; // 5%
+    }
+
+    // Descuento por monto (if anidado)
+    if (montoCompra > 500) {
+        descuentoTotal += 0.20; // 20%
+    } else {
+        if (montoCompra > 200) {
+            descuentoTotal += 0.10; // 10%
+        }
+    }
+
+    // Descuento por cupón (switch)
+    switch (codigoCupon) {
+        case 1:
+            descuentoTotal += 0.05; // 5%
+            break;
+        case 2:
+            descuentoTotal += 0.10; // 10%
+            break;
+        case 3:
+            descuentoTotal += 0.15; // 15%
+            break;
+        default:
+            cout << "Cupon no valido\n";
+    }
+
+    // Descuento adicional si es fin de semana
+    if (finDeSemana == true) {
+        descuentoTotal += 0.05; // 5%
+    }
+
+    // Limitar descuento máximo al 50%
+    descuentoTotal = min(descuentoTotal, 0.50);
+
+    //  Calcular precio final
+    double precioFinal = montoCompra * (1 - descuentoTotal);
+
+    cout << "\nDescuento total aplicado: " << descuentoTotal * 100 << "%";
+    cout << "\nPrecio final: $" << precioFinal << endl;
+
+    return 0;
+}
