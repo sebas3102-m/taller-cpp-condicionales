@@ -1,0 +1,22 @@
+#include <iostream>
+#include <iomanip>   // para setprecision
+
+int main() {
+    // Entrada
+    double temperaturaCelsius;
+    std::cout << "Ingresa la temperatura en Celsius: ";
+    std::cin >> temperaturaCelsius;
+
+    // Cálculos
+    double temperaturaFahrenheit = (temperaturaCelsius * 9.0 / 5.0) + 32.0;
+    double temperaturaKelvin     = temperaturaCelsius + 273.15;
+    double temperaturaRankine    = (temperaturaCelsius + 273.15) * 9.0 / 5.0; // K a Rankine
+
+    // Salida con 2 decimales
+    std::cout << std::fixed << std::setprecision(2);
+    std::cout << "Fahrenheit: " << temperaturaFahrenheit << std::endl;
+    std::cout << "Kelvin:     " << temperaturaKelvin << std::endl;
+    std::cout << "Rankine:    " << temperaturaRankine << std::endl;
+
+    return 0;
+}
